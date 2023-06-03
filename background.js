@@ -1,11 +1,24 @@
 // Log to console a list of all browser extensions
 const getExtensions = async (tabId, changeInfo, tab) => {
-    console.log('Updated to URL:', tab.url)
     let extensions = await chrome.management.getAll();
-    console.log(extensions);
-    let extensionToDisable = extensions[0].id
-    // Disable one of the extensions
-    chrome.management.setEnabled(extensionToDisable, false);
+    console.log('Installed Extensions: ', extensions);
+    let extensionToDisable = extensions[0].id;
+    return extensionToDisable;
 }
 
-chrome.tabs.onUpdated.addListener(getExtensions);
+const processTabUpdate = async (tabId, changeInfo, tab) => {
+    console.log('URL: ', tab.url);
+    const extensionToDisable = await getExtensions(tabId, changeInfo, tab);
+    disableExtension(extensionToDisable);
+}
+
+const disableExtension = (extensionId) => {
+    console.log('Extension ID: ', extensionId);
+    chrome.management.setEnabled(extensionId, false, () => {
+        // TODO: Add error handling
+        console.log('Extension Disabled');
+    });
+}
+
+chrome.tabs.onUpdated.addListener(processTabUpdate);
+
