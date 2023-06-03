@@ -3,6 +3,9 @@ const getExtensions = async (tabId, changeInfo, tab) => {
     console.log('Updated to URL:', tab.url)
     let extensions = await chrome.management.getAll();
     console.log(extensions);
+    let extensionToDisable = extensions[0].id
+    // Disable one of the extensions
+    chrome.management.setEnabled(extensionToDisable, false);
 }
 
 chrome.tabs.onUpdated.addListener(getExtensions);
