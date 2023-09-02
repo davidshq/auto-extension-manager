@@ -1,10 +1,18 @@
 {
     "name": "Auto Extension Manager",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Automatically enables/disables specified extensions based on the current URL.",
     "manifest_version": 3,
     "background": {
         "service_worker": "background.js"
     },
-    "permissions": ["tabs", "management"]
-    }
+    "options_ui": {
+        "open_in_tab": true,
+        "page": "options.html"
+    },
+    "permissions": [
+        "tabs",
+        "management",
+        "storage"
+    ]
+}

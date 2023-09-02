@@ -15,7 +15,7 @@ const processTabUpdate = async (tabId, changeInfo, tab) => {
         return;
     }
     console.log('URL: ', tab.url);
-    // Check if site is in out list of sites to disable extensions for
+    // Check if site is in our list of sites to disable extensions for
     if (checkDomain(tab.url)) {
         // Get list of extensions to disable
         const extensionToDisable = await getExtensions(tabId, changeInfo, tab);

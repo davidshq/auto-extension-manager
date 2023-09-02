@@ -35,8 +35,13 @@ To create a browser plugin that allows users to select one or more plugins that 
 - Allow groups of extensions to be paired with specific domain lists so that not all plugins need be disabled on all sites whenever a block listed site is encountered.
 - Consider using Plasmo framework for browser independence.
 
-## Documentation
+## Resources
+
+### Documentation
 - [Chrome Extension API](https://developer.chrome.com/docs/extensions/reference/):
     - [chrome.management](https://developer.chrome.com/docs/extensions/reference/management/)
     - [chrome.tabs](https://developer.chrome.com/docs/extensions/reference/tabs/)
+- [Give users options](https://developer.chrome.com/docs/extensions/mv3/options/)
+
+### Blogs
 - [How to Write a Chrome Extension](https://nrogap.medium.com/how-to-write-a-chrome-extension-b81218954c7c)
