@@ -5,11 +5,25 @@
   <body>
     <h1>Auto Extension Manager Options</h1>
 
-    <h2>Enter Websites Extensions Should Be Disabled On</h2>
+    <h2>Websites</h2>
+
+    <p>
+      Enter a list of the websites on which certain extensions should be disabled. Each
+      website should be listed on its own line.
+    </p>
 
     <textarea id="website-list" rows="10" cols="50"></textarea>
 
-    <h2>Select Extensions to Disable:</h2>
+    <br />
+    <br />
+    <button id="saveWebsiteList">Save Website List</button>
+
+    <h2>Extensions</h2>
+
+    <p>
+      From the list of extensions currently installed on this browser select the ones 
+      you want to be disabled when you visit any of the above websites.
+    </p>
 
     <ul id="extension-list">
     </ul>
