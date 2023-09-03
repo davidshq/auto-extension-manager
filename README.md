@@ -4,7 +4,8 @@ NOTE: This plugin is being actively developed, it is not ready for use.
 
 ## Goal
 
-To create a browser plugin that allows users to select one or more plugins that should be disabled when the browser opens one of a user selected list of domains.
+To create a browser plugin that allows users to select one or more plugins that should 
+be disabled when the browser opens one of a user selected list of domains.
 
 ## What It Does Now
 - Triggers when a tab is updated (but only proceeds if URL has changed)
@@ -16,10 +17,6 @@ To create a browser plugin that allows users to select one or more plugins that 
 ## Tasks
 
 ### Major
-- Provide a configuration UI
-    - Allows individuals to select extensions that should be disable when the loaded URL matches one of the domains in the block list
-    - Allows individuals to create a list of domains that should result in extensions being disabled when one of the domains is the loaded URL
-- Disable the selected extensions when URL from block list is matched
 - Enable the selected extensions when URL from block list is no longer matched
 
 ### Tidying
