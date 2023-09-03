@@ -1,12 +1,14 @@
-let selectedExtensions = [];
+let extensionsToDisable = [];
 let selectedSites = [];
 
 // Get list of extensions to disable
 const getExtensionsToDisable = () => {
   console.log('getExtensionsToDisable');
+  // Get all the items in Chrome storage
   chrome.storage.sync.get((items) => {
-    selectedExtensions = items.excludedExtensions;
-    console.log('Selected Extensions: ', selectedExtensions);
+    // Keep the list of extensions we don't want
+    extensionsToDisable = items.excludedExtensions;
+    console.log('Selected Extensions: ', extensionsToDisable);
   });
 }
 
@@ -23,17 +25,19 @@ const processTabUpdate = async (tabId, changeInfo, tab) => {
   console.log('processTabUpdate');
   // We only need to take action if the URL has changed, return otherwise
   if (!changeInfo.url) {
-      console.log('No URL change');
       return;
   }
   console.log('URL: ', tab.url);
   // Check if site is in our list of sites to disable extensions for
   if (isDomainProhibited(tab.url)) {
     // Get list of extensions to disable
-    selectedExtensions.forEach((extension) => {
-      disableExtension(extension);
+    extensionsToDisable.forEach((extension) => {
+      disableExtension(extension, false);
     });
   } else {
+    extensionsToDisable.forEach((extension) => {
+      disableExtension(extension, true);
+    });
     console.log('Not in list of sites to disable extensions for');
   }
 }
@@ -44,16 +48,17 @@ const isDomainProhibited = (url) => {
   // Strip http://, subdomain, etc. from URL
   url = url.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0];
   console.log(url);
+  // Compare current tab url to urls in selected sites
   if (selectedSites.includes(url)) {
     console.log('Domain in list of sites to disable extensions for');
     return true
   }
 }
 
-// Disable a specific extension
-const disableExtension = (extensionId) => {
+// Disable or enable a specific extension
+const disableExtension = (extensionId, enabled) => {
   console.log('Extension ID: ', extensionId);
-  chrome.management.setEnabled(extensionId, false, () => {
+  chrome.management.setEnabled(extensionId, enabled, () => {
     // TODO: Add error handling
     console.log('Extension Disabled');
   });

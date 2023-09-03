@@ -17,14 +17,13 @@ be disabled when the browser opens one of a user selected list of domains.
 ## Tasks
 
 ### Major
-- Enable the selected extensions when URL from block list is no longer matched
+- None At the Moment
 
 ### Tidying
-- Filter the actions on which a tab update triggers our extension to only occur when the loaded URL changes
+- None At the Moment
 
 ### Questions
-- Does the onUpdated trigger when the active tab is changed? If not, we need to check when the tab becomes active as well so that when a user switches tabs extensions don't remain disabled if they shouldn't be.
-- Does disabled the extension cause it to be unloaded from the page if it is inserted into the page? If not, we may need to reload the page to ensure extension is not still active in some sense.
+- None at the Moment
 
 ### Future Iteration
 - Allow groups of extensions to be created.
@@ -33,6 +32,10 @@ be disabled when the browser opens one of a user selected list of domains.
 - Consider using Plasmo framework for browser independence.
 
 ## Resources
+
+### AI
+- GitHub Copilot
+  - Including the Chat extension.
 
 ### Documentation
 - [Chrome Extension API](https://developer.chrome.com/docs/extensions/reference/):

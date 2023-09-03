@@ -1,3 +1,6 @@
+- 0.1.4 - 9/3/23:
+  - Refactor `selectedExtensions` to `extensionsToDisable`
+  - Make `disableExtension` able to both enable and disable extensions based on parameters passed
 - 0.1.3 - 9/3/23:
   - Add .gitignore
   - Make extension use the options values when selecting sites to filter and extensions to disable
