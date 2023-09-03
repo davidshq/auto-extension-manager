@@ -1,18 +1,14 @@
 # Auto Extension Manager
 
-NOTE: This plugin is being actively developed, it is not ready for use.
-
-## Goal
-
-To create a browser plugin that allows users to select one or more plugins that should 
+A browser extension that allows users to select one or more extensions that should 
 be disabled when the browser opens one of a user selected list of domains.
 
 ## What It Does Now
-- Triggers when a tab is updated (but only proceeds if URL has changed)
-- Gets a list of installed extensions
-- Log the list of installed extensions to the console
-- Checks if the changed url is in the list of domains to disable extensions for
-- Disables an extension
+- Triggered whenever a tab is updated (e.g. URL is changed)
+- Checks a user configured list of domains to see if some extensions should be 
+  disabled while tab is on one of those domains
+- If tab is on a specified domain, then user selected list of extensions are disabled
+- When a tab is no longer on a specified domain, extensions are re-enabled
 
 ## Tasks
 
