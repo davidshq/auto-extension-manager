@@ -1,3 +1,5 @@
+- 0.1.5 - 9/3/23:
+  - Update regex so that it strips subdomains from urls when they aren't standard like `www`.
 - 0.1.4 - 9/3/23:
   - Refactor `selectedExtensions` to `extensionsToDisable`
   - Make `disableExtension` able to both enable and disable extensions based on parameters passed
