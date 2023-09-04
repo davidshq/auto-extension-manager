@@ -43,8 +43,8 @@ const processTabUpdate = async (tabId, changeInfo, tab) => {
 // Check if a specific url is in list of domains to disable extensions for
 const isDomainProhibited = (url) => {
   console.log('Checking if domain is on prohibited list for select extensions');
-  // Strip http://, subdomain, etc. from URL
-  url = url.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0];
+  // Strip http://, subdomain, etc. from URL to get base domain
+  url = url.replace(/^(?:https?:\/\/)?(?:[^./]+\.)?([^./]+\.[^./]+).*$/i, "$1");
   console.log(url);
   // Compare current tab url to urls in selected sites
   if (selectedSites.includes(url)) {
