@@ -21,23 +21,34 @@ const getSitesToDisableExtensionsFor = () => {
 }
 
 // Triggered whenever a tab is updated
-const processTabUpdate = async (tabId, changeInfo, tab) => {
+const processTabUpdated = async (changeInfo, tab) => {
   console.log('A tab update has occurred, processing...');
-  // We only need to take action if the URL has changed, return otherwise
-  if (!changeInfo.url) {
-      return;
+  if (tab.url) {
+    actOnExtensions(tab);
   }
-  // Check if site is in our list of sites to disable extensions for
-  if (isDomainProhibited(tab.url)) {
-    // Get list of extensions to disable
-    extensionsToDisable.forEach((extension) => {
-      disableExtension(extension, false);
-    });
-  } else {
-    extensionsToDisable.forEach((extension) => {
-      disableExtension(extension, true);
-    });
-  }
+}
+
+// Triggered whenever tab in a window changes
+const processTabActivated = async (activeInfo) => {
+  console.log('A tab has been activated, processing...');
+  chrome.tabs.get(activeInfo.tabId, (tab) => {
+    actOnExtensions(tab);
+  })
+}
+
+// If domain is prohibited, disable it, otherwise enable
+const actOnExtensions = async (tab) => {
+      // Check if site is in our list of sites to disable extensions for
+      if (isDomainProhibited(tab.url)) {
+        // Get list of extensions to disable
+        extensionsToDisable.forEach((extension) => {
+          disableExtension(extension, false);
+        });
+      } else {
+        extensionsToDisable.forEach((extension) => {
+          disableExtension(extension, true);
+        });
+      }
 }
 
 // Check if a specific url is in list of domains to disable extensions for
@@ -70,4 +81,8 @@ const disableExtension = (extensionId, enabled) => {
 
 getExtensionsToDisable();
 getSitesToDisableExtensionsFor();
-chrome.tabs.onUpdated.addListener(processTabUpdate);
+
+// Fires when a tab is updated, e.g. its title or url change
+chrome.tabs.onUpdated.addListener(processTabUpdated);
+// Fires when the active tab in a window changes
+chrome.tabs.onActivated.addListener(processTabActivated);

@@ -1,3 +1,7 @@
+- 0.1.6 - 9/9/23:
+  - Added listener on tabs activated and function to handle (`processTabActivated`).
+  - Renamed `processTabUpdate` to `processTabUpdated`.
+  - Extracted checking logic out of `processTabUpdated` into `actOnExtensions`.
 - 0.1.5 - 9/3/23:
   - Update regex so that it strips subdomains from urls when they aren't standard like `www`.
 - 0.1.4 - 9/3/23:
