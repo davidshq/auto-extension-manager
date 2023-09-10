@@ -1,3 +1,5 @@
+- 0.1.7 - 9/9/23:
+  - Now checks for wildcard at beginning of selectedSite and if it exists allows any subdomain to match.
 - 0.1.6 - 9/9/23:
   - Added listener on tabs activated and function to handle (`processTabActivated`).
   - Renamed `processTabUpdate` to `processTabUpdated`.

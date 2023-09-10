@@ -55,12 +55,27 @@ const actOnExtensions = async (tab) => {
 const isDomainProhibited = (url) => {
   console.log('Checking if domain is on prohibited list for select extensions');
   // Strip http://, subdomain, etc. from URL to get base domain
-  url = url.replace(/^(?:https?:\/\/)?(?:[^./]+\.)?([^./]+\.[^./]+).*$/i, "$1");
+  if (!url) {
+    return;
+  }
+  url = new URL(url).hostname;
   console.log(url);
   // Compare current tab url to urls in selected sites
-  if (selectedSites.includes(url)) {
-    console.log('Domain is on prohibited list');
-    return true
+  for (const selectedSite of selectedSites) {
+    console.log(selectedSite);
+    if (selectedSite.startsWith('*.')) {
+      let trimmedSelectedSite = selectedSite.replace(/^\*\./, '');
+      if (url.endsWith(trimmedSelectedSite)) {
+        console.log('Domain is on prohibited list');
+        return true;
+      }
+    } else {
+      console.log(url, selectedSite);
+      if (url == selectedSite) {
+        console.log('Domain is on prohibited list');
+        return true;
+      }
+    }
   }
 }
 
