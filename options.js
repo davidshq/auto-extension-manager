@@ -18,7 +18,6 @@ const restoreOptions = () => {
 
     chrome.management.getAll((extensions) => {
       createExtensionCheckboxes(extensions, excludedExtensions, extensionList);
-      getExtensionPermissions(extensions);
     });
 
     selectedWebsites = items.selectedWebsites.join('\n');
@@ -62,7 +61,7 @@ const createExtensionCheckboxes = (extensions, excludedExtensions, extensionList
     chrome.management.get(extension.id, (extensionInfo) => {
       extensionInfo.permissions.forEach((permission) => {
         const permissionLi = document.createElement('li');
-        permissionLi.appendChild(document.createTextNode(permission));
+          permissionLi.appendChild(document.createTextNode(permission));
         permissions.appendChild(permissionLi);
       });
     });
