@@ -1,3 +1,5 @@
+- 0.1.8 - 9/11/23:
+  - Adds the permissions utilized by each extension on the options page.
 - 0.1.7 - 9/9/23:
   - Now checks for wildcard at beginning of selectedSite and if it exists allows any subdomain to match.
 - 0.1.6 - 9/9/23:
