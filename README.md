@@ -1,5 +1,7 @@
 # Auto Extension Manager
 
+**DON'T USE, THIS HAS ISSUES THAT I DON'T HAVE TIME CURRENTLY TO RESOLVE.**
+
 A browser extension that allows users to select one or more extensions that should 
 be disabled when the browser opens one of a user selected list of domains.
 
